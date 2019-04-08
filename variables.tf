@@ -2,22 +2,40 @@ variable "APP_NAME" {
   description = "Lambda function name."
 }
 
+variable "SlackOAuthAccessToken" {
+  description = "OAuth Slack access token"
+  MinLength = 1
+  Type = "string"
+  NoEcho = true
+}
+
+variable "SlackBotUserOAuthAccessToken" {
+  description = "OAuth Slack BotUser access token"
+  MinLength = 1
+  Type = "String"
+  NoEcho = true
+}
+
+variable "SlackChannel" {
+  Type = "String"
+  MinLength = 1
+  Default = "builds"
+}
+
+variable "SlackBotName" {
+  MinLength = 1
+  Type = "String"
+  default = "PipelineBuildBot"
+}
+
+variable "SlackBotIcon" {
+  MinLength = 1
+  Type = "String"
+  Default = ":robot_face:"
+}
 variable "PIPELINE_NAMES" {
   description = "CodePipeline names"
   type = "list"
-}
-
-variable "SLACK_WEBHOOK_URL" {
-  description = "Webhook URL provided by Slack when configured Incoming Webhook."
-}
-
-variable "SLACK_CHANNEL" {
-  description = "Slack channel where messages are going to be posted."
-}
-
-variable "RELEVANT_STAGES" {
-  description = "Stages for which you want to get notified (ie. 'SOURCE,BUILD,DEPLOY'). Defaults to all)"
-  default     = "SOURCE,BUILD,DEPLOY"
 }
 
 variable "LAMBDA_TIMEOUT" {

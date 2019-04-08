@@ -90,9 +90,13 @@ resource "aws_lambda_function" "lambda" {
 
   environment {
     variables = {
-      "SLACK_WEBHOOK_URL" = "${var.SLACK_WEBHOOK_URL}"
-      "SLACK_CHANNEL"     = "${var.SLACK_CHANNEL}"
-      "RELEVANT_STAGES"   = "${var.RELEVANT_STAGES}"
+      "SLACK_TOKEN"       = "${var.SlackOAuthAccessToken}"
+      "SLACK_BOT_TOKEN"   = "${var.SlackBotUserOAuthAccessToken}"
+      "SLACK_BOT_NAME"    = "${var.SlackBotName}"
+      "SLACK_BOT_ICON"    = "${var.SlackBotIcon}"
+#      "SLACK_WEBHOOK_URL" = "${var.SLACK_WEBHOOK_URL}"
+#      "SLACK_CHANNEL"     = "${var.SLACK_CHANNEL}"
+#      "RELEVANT_STAGES"   = "${var.RELEVANT_STAGES}"
     }
   }
 }
